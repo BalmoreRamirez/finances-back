@@ -32,5 +32,6 @@ const Cuenta = sequelize.define('Cuenta', {
     type: DataTypes.STRING,
   },
 });
+Cuenta.belongsTo(NombreCuenta, { foreignKey: 'nombre_cuenta_id' });
 
 export default Cuenta;

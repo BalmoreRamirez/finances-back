@@ -1,6 +1,8 @@
 import Transaccion from '../models/Transaccion.js';
 import Categoria from "../models/Categoria.js";
 import TipoTransaccion from "../models/TipoTransaccion.js";
+import Cuenta from '../models/Cuenta.js';
+import NombreCuenta from '../models/NombreCuenta.js';
 
 class TransaccionService {
   static async getAllTransacciones() {
@@ -15,6 +17,16 @@ class TransaccionService {
           model: TipoTransaccion,
           attributes: ['nombre'],
         },
+        {
+          model:Cuenta,
+          attributes:['nombre_cuenta_id'],
+          include: [
+            {
+              model: NombreCuenta,
+              attributes: ['nombre'],
+            },
+          ]
+        }
       ],
     });
   }
