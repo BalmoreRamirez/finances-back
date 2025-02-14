@@ -4,6 +4,7 @@ import Usuario from './Usuario.js';
 import Categoria from './Categoria.js';
 import Cuenta from './Cuenta.js';
 import TipoTransaccion from './TipoTransaccion.js';
+import Presupuesto from "./Presupuesto.js";
 
 const Transaccion = sequelize.define('Transaccion', {
   usuario_id: {
@@ -33,6 +34,14 @@ const Transaccion = sequelize.define('Transaccion', {
     type: DataTypes.INTEGER,
     references: {
       model: Cuenta,
+      key: 'id',
+    },
+    onDelete: 'SET NULL',
+  },
+  presupuesto_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Presupuesto,
       key: 'id',
     },
     onDelete: 'SET NULL',

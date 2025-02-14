@@ -28,6 +28,10 @@ const Presupuesto = sequelize.define('Presupuesto', {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
+  diferenciaMonto: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false,
+  },
   fecha_inicio: {
     type: DataTypes.DATE,
     allowNull: false,

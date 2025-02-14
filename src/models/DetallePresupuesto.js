@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 import Presupuesto from './Presupuesto.js';
-import Categoria from "./Categoria.js";
+import Categoria from './Categoria.js';
 
-const VariacionPresupuesto = sequelize.define('VariacionPresupuesto', {
+const DetallePresupuesto = sequelize.define("DetallePresupuesto", {
   presupuesto_id: {
     type: DataTypes.INTEGER,
     references: {
@@ -20,8 +20,8 @@ const VariacionPresupuesto = sequelize.define('VariacionPresupuesto', {
     },
     onDelete: 'SET NULL',
   },
-  fecha: {
-    type: DataTypes.DATE,
+  nombre: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
   monto: {
@@ -32,5 +32,6 @@ const VariacionPresupuesto = sequelize.define('VariacionPresupuesto', {
     type: DataTypes.STRING,
   },
 });
-
-export default VariacionPresupuesto;
+DetallePresupuesto.belongsTo(Categoria, { foreignKey: 'categoria_id' });
+DetallePresupuesto.belongsTo(Presupuesto, { foreignKey: 'presupuesto_id' });
+export default DetallePresupuesto;

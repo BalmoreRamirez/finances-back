@@ -7,7 +7,7 @@ import NombreCuenta from '../models/NombreCuenta.js';
 class TransaccionService {
   static async getAllTransacciones() {
     return await Transaccion.findAll({
-      attributes: ['id', 'usuario_id', 'categoria_id', 'tipoTransaccionId', 'cuenta_id', 'monto', 'fecha', 'descripcion', 'createdAt', 'updatedAt'],
+      attributes: ['id', 'usuario_id', 'categoria_id', 'tipoTransaccionId', 'cuenta_id','presupuesto_id', 'monto', 'fecha', 'descripcion', 'createdAt', 'updatedAt'],
       include: [
         {
           model: Categoria,
@@ -19,7 +19,7 @@ class TransaccionService {
         },
         {
           model:Cuenta,
-          attributes:['nombre_cuenta_id'],
+          attributes:['cuenta_id'],
           include: [
             {
               model: NombreCuenta,
